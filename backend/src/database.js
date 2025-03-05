@@ -1,11 +1,10 @@
-import moongose from 'mongoose'
-
-moongose.set('strictQuery', true)
+import mongoose from 'mongoose'
+mongoose.set('strictQuery', true)
 
 
 const connection = async () =>{
     try{
-        const {connection} = await moongose.connect(process.env.DT_URI_LOCAL)
+        const {connection} = await mongoose.connect(process.env.DT_URI_LOCAL)
         console.log(`base de datos conectado a ${connection.host} en el puerto ${connection.port}`)
 
     }catch (error){
@@ -15,5 +14,3 @@ const connection = async () =>{
 }
 
 export default connection
-
-
