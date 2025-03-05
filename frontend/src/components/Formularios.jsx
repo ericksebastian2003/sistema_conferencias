@@ -124,7 +124,7 @@ try{
 
         <div className="mt-4 flex justify-center items-center px-3">
           <input type="submit" className="mr-8 bg-green-700 text-white px-4 py-2 font-bold w-50 h-10 rounded-lg hover:bg-green-500 cursor-pointer transition-all" value={conferencista?._id ? 'Actualizar Conferencista' : 'Crear Conferencista'} />
-          <button className="mr-8 bg-red-700 text-white px-4 py-2 rounded-lg font-bold w-50 h-10 hover:bg-red-500" onClick={() => navigate("/dashboard/conferencistas")}>Cancelar</button>
+          <input type="button" className="mr-8 bg-red-700 text-white px-4 py-2 rounded-lg font-bold w-50 h-10 hover:bg-red-500" onClick={() => navigate("/dashboard/conferencistas")}>Cancelar</input>
         </div>
       </form>
     </>
@@ -418,9 +418,23 @@ try{
           <input id="ubicacion" name="ubicacio" value={form.ubicacion} placeholder="Ubicación" className="border rounded-lg text-center" onChange={handleChange} />
         </div>
 
+    
+
+        <div className="flex flex-col items-center justify-center">
+          <label htmlFor="genero" className="font-bold text-lg">Género</label>
+          <select name="genero" value={form.genero} onChange={handleChange} className="border rounded-lg text-center">
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+          </select>
+        </div>
+
+        <div className="flex flex-col items-center justify-center">
+          <label htmlFor="empresa" className="font-bold text-lg">Empresa</label>
+          <input id="empresa"  name="empresa" value={form.empresa} placeholder="Empresa" className="border rounded-lg text-center" onChange={handleChange} />
+        </div>
 
         <div className="mt-4 flex justify-center items-center px-3">
-          <input type="submit" className="mr-8 bg-green-700 text-white px-4 py-2 font-bold w-50 h-10 rounded-lg hover:bg-green-500 cursor-pointer transition-all" value={conferencista?._id ? 'Actualizar Auditorio' : 'Crear Auditorio'} />
+          <input type="submit" className="mr-8 bg-green-700 text-white px-4 py-2 font-bold w-50 h-10 rounded-lg hover:bg-green-500 cursor-pointer transition-all" value={conferencista?._id ? 'Actualizar Conferencista' : 'Crear Conferencista'} />
           <button className="mr-8 bg-red-700 text-white px-4 py-2 rounded-lg font-bold w-50 h-10 hover:bg-red-500" onClick={() => navigate("/dashboard/conferencistas")}>Cancelar</button>
         </div>
       </form>

@@ -13,9 +13,9 @@ const Dashboard = () =>{
         
           <aside className="w-64 bg-sky-900 text-yellow-400 p-6 flex flex-col items-center">
             
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJUnFY43liQeK915e1u6caAsgDIRhVzhewaA&s"
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXUr2Fz1AFEcaf8Fxz5rH16BMY3LLOz4ulKA&s"
               alt="img-user"
-              className="mt-4 p-1 border-2 border-yellow-500 rounded-full"
+              className="mt-4 p-1 border-2 border-white rounded-full"
               width={100}
               height={100}
             />

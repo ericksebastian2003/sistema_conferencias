@@ -43,7 +43,7 @@ const Login = () => {
       }
     } catch (error) {
       setMensaje({
-        respuesta: error.response?.data?.msg || "Error en la autenticación",
+        respuesta: error.response?.data?.msg || "Usuario o contraseña incorrectos",
         tipo: false
       });
       setForm({
