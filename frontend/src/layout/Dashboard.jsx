@@ -25,9 +25,9 @@ const Dashboard = () =>{
             <hr className="border-slate-400 w-full" />
             <ul className="mt-6 w-full space-y-3">
               {[
-                { path: "/dashboard/clientes", label: "Clientes" },
-                { path: "/dashboard/productos", label: "Productos" },
-                { path: "/dashboard/pedidos", label: "Pedidos" },
+                { path: "/dashboard/conferencistas ", label: "Conferencistas" },
+                { path: "/dashboard/auditorios", label: "Auditorios" },
+                { path: "/dashboard/reservas", label: "Reservas" },
               ].map((item) => (
                 <li key={item.path} className="text-center">
                   <Link

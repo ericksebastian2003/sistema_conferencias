@@ -4,47 +4,31 @@ import { MdAddCircle, MdDeleteForever, MdModeEdit } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import Mensaje from '../components/Mensaje';
 import Modal from '../components/Modals';
+import { FormAuditorio } from '../components/Formularios';
 
-const Products = () =>{
+const Auditorios = () =>{
 
   const [isModalOpen , setIsModalOpen] = useState(false)
   const navigate = useNavigate();
-  const [products, setProducts] = useState([]);
+  const [auditorios, setAuditorios] = useState();
 
-  const listofClients = async () => {
+  const listofAuditorios = async () => {
     try {
       const token = localStorage.getItem('token');
-      const url = `${import.meta.env.VITE_URL_BACKEND}/productos`;
+      const url = `${import.meta.env.VITE_URL_BACKEND}/auditorios`;
       const options = {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
       };
-      //const response = await axios.get(url, options);
-      //const response = await axios.get(url, { headers: options.headers });
-      const mockProducts = [
-        {
-          _id: 1,
-          name: "Sebas",
-          apellido: "Caiza",
-        },
-        {
-          _id: 2,
-          name: "Juan",
-          apellido: "Pérez",
-        },
-        {
-          _id: 3,
-          name: "María",
-          apellido: "López",
-        },
-      ];
+      const response = await axios.get(url, options);
+      
 
-      //console.log(response.data)
-      setClients(mockClients); 
+      console.log(response.data)
+     
 
-      //setClients(response.data); 
+      setAuditorios(response.data); 
     } catch (error) {
       console.log('Error en la petición', error);
     }
@@ -52,10 +36,10 @@ const Products = () =>{
 
   const handleDelete = async (id) => {
     try {
-      const confirmation = window.confirm('¿Estás seguro/a de eliminar este cliente?');
+      const confirmation = window.confirm('¿Estás seguro/a de eliminar este auditorio?');
       if (confirmation) {
         const token = localStorage.getItem('token');
-        const url = `${import.meta.env.VITE_URL_BACKEND}/clientes/eliminar/${id}`;
+        const url = `${import.meta.env.VITE_URL_BACKEND}/auditorios/eliminar/${id}`;
         const options = {
           headers: {
             'Content-Type': 'application/json',
@@ -72,7 +56,7 @@ const Products = () =>{
   };
 
   useEffect(() => {
-    listofClients();
+    listofAuditorios();
   }, []);
 
   return (
@@ -80,10 +64,10 @@ const Products = () =>{
     <div className='flex items-center justify-center'>
       <button   onClick={() => setIsModalOpen(true)}  className="bg-yellow-600 flex items-center  justify-center gap-2 px-4 py-2 rounded-lg text-white font-bold">
         <MdAddCircle className="text-2xl" />
-        Crear Clientes
+        Crear Auditorios
       </button>
       </div>
-      {clients.length === 0 ? (
+      {auditorios.length === 0 ? (
         <Mensaje tipo="active">{'No existen registros'}</Mensaje>
       ) : (
         <table className="w-full mt-5 table-auto shadow-lg bg-white">
@@ -91,16 +75,16 @@ const Products = () =>{
             <tr>
               <th className="p-2">#</th>
               <th className="p-2">Nombre</th>
-              <th className="p-2">Apellido</th>
+              <th className="p-2">Capacidad</th>
               <th className="p-2">Acciones</th>
             </tr>
           </thead>
           <tbody>
-            {clients.map((client, index) => (
-              <tr className="border-b hover:bg-gray-400 text-center" key={client._id}>
+            {auditorios.map((auditorio, index) => (
+              <tr className="border-b hover:bg-gray-400 text-center" key={auditorio._id}>
                 <td>{index + 1}</td>
-                <td>{client.name}</td>
-                <td>{client.apellido}</td>
+                <td>{auditorio.nombre}</td>
+                <td>{auditorio.capacidad}</td>
                 <td className="py-2 flex justify-center items-center gap-4">
                   <MdModeEdit
                     className="h-11 text-white w-11 p-2 rounded-lg bg-sky-700 cursor-pointer hover:bg-sky-600"
@@ -117,8 +101,8 @@ const Products = () =>{
         </table>
       )}
       {isModalOpen && (
-  <Modal isOpen={isModalOpen} title="Crear Cliente">
-    <FormularioCliente/>
+  <Modal isOpen={isModalOpen} title="Crear Auditorio">
+    <FormAuditorio/>
   </Modal>
 )}
 
@@ -126,4 +110,4 @@ const Products = () =>{
   );
 };
 
-export default Products
+export default Auditorios
